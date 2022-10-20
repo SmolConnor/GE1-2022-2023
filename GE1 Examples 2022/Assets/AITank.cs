@@ -9,7 +9,7 @@ public class AITank : MonoBehaviour {
     public static int numWaypoints = 5;
     float theta = Mathf.PI * 2.0f / (float)numWaypoints + 1;
     public int current = 0;
-    List<Vector3> waypoints = new List<Vector3>();
+    public List<Vector3> waypoints = new List<Vector3>();
     public float speed = 10;
     public Transform player;    
 
@@ -36,6 +36,11 @@ public class AITank : MonoBehaviour {
         // Task 2
         // Put code here to calculate the waypoints in a loop and 
         // Add them to the waypoints List
+        for (int i = 0; i < numWaypoints + 1; i++)
+        {
+            Vector3 pos = new Vector3(Mathf.Sin(theta * i) * radius, 0, Mathf.Cos(theta * i) * radius);
+            waypoints.Add(pos);
+        }
     }
 
     // Update is called once per frame
