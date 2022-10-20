@@ -6,7 +6,8 @@ using UnityEngine;
 public class AITank : MonoBehaviour {
 
     public float radius = 10;
-    public int numWaypoints = 5;
+    public static int numWaypoints = 5;
+    float theta = Mathf.PI * 2.0f / (float)numWaypoints + 1;
     public int current = 0;
     List<Vector3> waypoints = new List<Vector3>();
     public float speed = 10;
@@ -16,12 +17,17 @@ public class AITank : MonoBehaviour {
     {
         if (!Application.isPlaying)
         {
+            for(int i = 0; i < numWaypoints+1; i++)
+            {
+                Vector3 pos = new Vector3(Mathf.Sin(theta * i) * radius,0, Mathf.Cos(theta * i) * radius);
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(pos, 1);
+            }
             // Task 1
             // Put code here to draw the gizmos
             // Use sin and cos to calculate the positions of the waypoints 
             // You can draw gizmos using
-            // Gizmos.color = Color.green;
-            // Gizmos.DrawWireSphere(pos, 1);
+             
         }
     }
 
